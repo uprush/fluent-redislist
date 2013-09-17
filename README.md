@@ -1,7 +1,7 @@
 Redis List Output Plugin for Fluent
 ===================================
 
-fluent-redis_list is a fluent plugin to output to redis as list.
+fluent-redislist is a fluent plugin to output to redis as list.
 
 Installation
 ------------
