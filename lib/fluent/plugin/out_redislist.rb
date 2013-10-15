@@ -32,8 +32,8 @@ module Fluent
 
     def format(tag, time, record)
       record["@node"] = @whereami
-      record["@timestamp"] = time
-      record["@type"] = tag
+      record["@timestamp"] = Time.at(time).to_s # to avoid LOGSTASH-1340
+      record["@key"] = tag
       record.to_msgpack
     end
 
@@ -42,7 +42,8 @@ module Fluent
         chunk.open { |io|
           begin
             MessagePack::Unpacker.new(io).each { |record|
-              @redis.rpush record['@type'], record.to_json
+              key = record.delete('@key')
+              @redis.rpush key, record.to_json
             }
           rescue EOFError
             # EOFError always occured when reached end of chunk.
