@@ -34,7 +34,7 @@ class FileOutputTest < Test::Unit::TestCase
   def test_format
     whereami = Socket.gethostname
     @d.emit({"a"=>1}, @time)
-    @d.expect_format({"a"=>1, "@node" => whereami, "@timestamp" => @time, "@type" => "test"}.to_msgpack)
+    @d.expect_format({"a"=>1, "@node" => whereami, "@timestamp" => Time.at(@time).to_s, "@key" => "test"}.to_msgpack)
     @d.run
   end
 
