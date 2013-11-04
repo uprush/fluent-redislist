@@ -6,6 +6,7 @@ Gem::Specification.new do |s|
   s.version     = "0.1.0"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Yifeng Jiang"]
+  s.license     = "Apache 2.0"
   s.date        = %q{2013-09-17}
   s.email       = "uprushworld at gmail.com"
   s.homepage    = "https://github.com/uprush/fluent-redislist"
